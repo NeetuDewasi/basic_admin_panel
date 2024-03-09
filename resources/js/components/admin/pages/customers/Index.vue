@@ -80,7 +80,7 @@ const onDelete = async (id, index) => {
                                             <i class="icofont icofont-home"></i>
                                         </router-link>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#!">Customer List</a>
+                                    <li class="breadcrumb-item"><a href="#!">Customers List</a>
                                     </li>
                                 </ul>
                             </div>
