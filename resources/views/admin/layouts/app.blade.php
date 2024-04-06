@@ -21,6 +21,7 @@
 
       <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
       <link rel="stylesheet" type="text/css" href="/assets/css/jquery.mCustomScrollbar.css">
+      {{--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">  --}}
 </head>
 
 <body>
@@ -35,6 +36,7 @@
  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     @vite('resources/js/app.js')
+     @vite('resources/js/common.js')
     <script type="text/javascript" src="/assets/js/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/assets/js/popper.js/popper.min.js"></script>

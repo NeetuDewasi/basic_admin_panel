@@ -13,6 +13,7 @@ class Customer extends Model
         'last_name',
         'mobile',
         'email',
+        'photo',
         'address'
     ];
 }

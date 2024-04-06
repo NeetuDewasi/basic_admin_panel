@@ -15,35 +15,41 @@ class CustomerController extends Controller
             'all_customers' => $customers
         ], 200);
     }
-        public function createCustomer(Request $request){
-            $customer = Customer::where('email',$request->email)->first();
-            if($customer)
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'This Customer already exist'
-                ],500);
-
-            $create = Customer::create([
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'mobile' => $request->mobile,
-                'email' => $request->email,
-                'address' => $request->address
-            ]);
-            if($create){
-                return response()->json([
-                    'status_code' => 201,
-                    'status' => 'success',
-                'message' => 'Customer Created successfully'
-                ]);
-            }
-
+    public function createCustomer(Request $request)
+    {
+        $customer = Customer::where('email', $request->email)->first();
+        if ($customer)
             return response()->json([
-                'status_code' => 401,
                 'status' => 'error',
-                'message' => 'Something Went Wrong'
+                'message' => 'This Customer already exist'
+            ], 500);
+        $image = '';
+        if ($request->hasFile('photo')) {
+            $image = '/storage/' . $request->file('photo')->store('customer/avatar');
+        }
+
+        $create = Customer::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'mobile' => $request->mobile,
+            'email' => $request->email,
+            'photo' => $image,
+            'address' => $request->address
+        ]);
+        if ($create) {
+            return response()->json([
+                'status_code' => 201,
+                'status' => 'success',
+                'message' => 'Customer Created successfully'
             ]);
         }
+
+        return response()->json([
+            'status_code' => 401,
+            'status' => 'error',
+            'message' => 'Something Went Wrong'
+        ]);
+    }
     public function getCustomerOnEdit($customer_id)
     {
         // Check if $customer_id is received
@@ -76,12 +82,16 @@ class CustomerController extends Controller
 
                 'message' => 'This Customer does not exist'
             ], 404); // 404 for not found
-
+        $image = '';
+        if ($request->hasFile('photo')) {
+            $image = '/storage/' . $request->file('photo')->store('customer/avatar');
+        }
         $update = $customer->update([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'mobile' => (int) $request->mobile,
             'email' => $request->email,
+            'photo' => $image,
             'address' => $request->address
         ]);
 
@@ -90,12 +100,13 @@ class CustomerController extends Controller
         ], 200);
     }
 
-    public function deleteCustomer($id){
+    public function deleteCustomer($id)
+    {
         $customer = Customer::find($id);
-        if($customer){
+        if ($customer) {
             $delete = $customer->delete();
         }
-            if($delete)
+        if ($delete)
             return response()->json([
                 'message' => 'Customer deleted successfully'
             ], 200);
@@ -107,4 +118,3 @@ class CustomerController extends Controller
         ]);
     }
 }
-

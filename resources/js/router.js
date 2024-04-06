@@ -5,6 +5,8 @@ import CustomerCreate from "./components/admin/pages/customers/Create.vue";
 import CustomerList from "./components/admin/pages/customers/Index.vue";
 import CustomerEdit from "./components/admin/pages/customers/Create.vue";
 import AdminProfile from "./components/admin/pages/profile/EditViewProfile.vue";
+import BlogEvents from "./components/admin/pages/blog_events/Index.vue";
+import BlogEventsCreate from "./components/admin/pages/blog_events/Create.vue";
 
 const routes = [
     {
@@ -33,7 +35,16 @@ const routes = [
         name: "admin.profile.edit",
         path: "/admin/profile/edit",
         component: AdminProfile,
-
+    },
+    {
+        name: "admin.blog_events",
+        path: "/admin/blog_events",
+        component: BlogEvents,
+    },
+    {
+        name: "admin.blog_events.create",
+        path: "/admin/blog_events/create",
+        component: BlogEventsCreate,
     },
 ];
 

@@ -1,13 +1,13 @@
 import { createApp } from "vue";
 import mainComponent from "./components/admin/MainComponent.vue";
 import router from "./router";
-import common from "./common";
+// import common from "./common";
 import Swal from "sweetalert2";
 
 const app = createApp({});
 app.component("admin-component", mainComponent);
 app.use(router);
-app.use(common);
+// app.use(common);S
 
 const Toast = Swal.mixin({
     toast: true,

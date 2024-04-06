@@ -12,6 +12,7 @@ const axiosInstance = axios.create({
 export default {
     methods: {
         callApi(method, url, data) {
+
             try {
                 return axiosInstance({
                     method: method,

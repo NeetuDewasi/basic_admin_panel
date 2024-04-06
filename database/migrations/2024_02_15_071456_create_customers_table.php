@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('last_name')->nullable();
             $table->bigInteger('mobile');
             $table->string('email');
+            $table->text('photo')->nullable();
             $table->string('address')->nullable();
             $table->timestamps();
         });
